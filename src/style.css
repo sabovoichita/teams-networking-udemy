@@ -46,9 +46,28 @@ h2 {
   font-weight: 100;
   font-size: 1.2em;
 }
+
 footer {
   background-color: #057988;
   color: white;
   text-align: center;
   padding: 7px;
+}
+
+#teamsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+#teamsTable th,
+#teamsTable td {
+  border: 1px solid #057988;
+  padding: 5px;
+}
+
+#teamsTable th {
+  color: white;
+  background-color: #057988;
+}
+#teamsTable tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
