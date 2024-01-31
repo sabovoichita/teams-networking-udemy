@@ -1,25 +1,25 @@
 [
   {
-    "promotion": "FastTrackIT",
+    "promotion": "Udemy",
     "members": "Nicolae Matei",
-    "name": "Teams Networking",
+    "name": "We",
+    "url": "https://nmatei.github.io/teams-networking"
+  },
+  {
+    "promotion": "Personal",
+    "members": "Nicolae",
+    "name": "Me",
     "url": "https://nmatei.github.io/teams-networking"
   },
   {
     "promotion": "FastTrackIT",
-    "members": "Nicolae Matei",
-    "name": "Teams Networking",
-    "url": "https://nmatei.github.io/teams-networking"
+    "members": "Matei",
+    "name": "They",
+    "url": "https://nmatei.github.io"
   },
   {
     "promotion": "FastTrackIT",
-    "members": "Nicolae Matei",
-    "name": "Teams Networking",
-    "url": "https://nmatei.github.io/teams-networking"
-  },
-  {
-    "promotion": "FastTrackIT",
-    "members": "Nicolae Matei",
+    "members": "Nick",
     "name": "Teams Networking",
     "url": "https://nmatei.github.io/teams-networking"
   }
