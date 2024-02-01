@@ -11,6 +11,7 @@
         <div id="my-picture">
           <img src="/images/network-team-icon.png" alt="Teams" width="100" height="100" />
         </div>
+
         <div id="header-info">
           <h1>Teams Networking....</h1>
           <h2>CRUD operations example (Create, Read, Update, Delete)</h2>
@@ -25,16 +26,45 @@
         <input type="search" name="search" id="search" placeholder="Search..." />
         <label for="search">🔎</label>
       </div>
-      <table id="teamsTable">
-        <thead>
-          <th>Promotion</th>
-          <th>Members</th>
-          <th>Project Name</th>
-          <th>Project URL</th>
-          <th></th>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <form action="secretary.html" method="get">
+        <table id="teamsTable">
+          <colgroup>
+            <col span="1" />
+            <col span="1" />
+            <col span="1" />
+            <col span="1" />
+            <col span="1" style="width: 80px" />
+          </colgroup>
+          <thead>
+            <th>Promotion</th>
+            <th>Members</th>
+            <th>Project Name</th>
+            <th>Project URL</th>
+            <th></th>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <input required type="text" name="promotion" id="promotion" placeholder="Enter promotion" />
+              </td>
+              <td>
+                <input required type="text" name="members" id="members" placeholder="Enter members" />
+              </td>
+              <td>
+                <input required type="text" name="name" id="name" placeholder="Enter project name" />
+              </td>
+              <td>
+                <input required type="text" name="url" id="url" placeholder="Enter project url" />
+              </td>
+              <td>
+                <button type="submit">💾</button>
+                <button type="reset">✖</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
     </section>
 
     <footer>📃Api Docs | 👨‍💻Source Code</footer>
