@@ -17,6 +17,22 @@ You can also find new project ideas.
 - [x] Search
 - [x] Loading mask
 
+## Start (Daily Usage)
+
+Start node-API
+
+```
+sh
+cd C:/Users/kita/Desktop/Projects/node-api
+npm start
+```
+
+start app(run in current project):
+
+```
+npm start
+```
+
 ## 🎞 Live Preview
 
 - ➡ [Projects & Ideas](https://github.com/sabovoichita/teams-networking-udemy.git/)
