@@ -3,15 +3,24 @@ import "./style.css";
 function $(selector) {
   return document.querySelector(selector);
 }
-
+// POST teams-json/create
 function createTeamRequest(team) {
-  // POST teams-json/create
   return fetch("http://localhost:3000/teams-json/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(team)
+  }).then(r => r.json());
+}
+// DELETE teams-json/delete
+function deleteTeamRequest(id) {
+  return fetch("http://localhost:3000/teams-json/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ id: id })
   }).then(r => r.json());
 }
 
@@ -22,7 +31,7 @@ function getTeamAsHTML(team) {
   <td>${team.name}</td>
   <td>${team.url}</td>
   <td>
-  <button type = "button" class = "action-btn delete-btn">♻</button>
+  <button type = "button" data-id="${team.id}" class = "action-btn delete-btn">♻</button>
   </td>
 </tr>`;
 }
@@ -68,6 +77,17 @@ function onSubmit(e) {
 
 function initEvents() {
   $("#teamForm").addEventListener("submit", onSubmit);
+
+  $("#teamsTable tbody").addEventListener("click", e => {
+    if (e.target.matches("button.delete-btn")) {
+      const id = e.target.dataset.id;
+      deleteTeamRequest(id).then(status => {
+        if (status.success) {
+          window.location.reload();
+        }
+      });
+    }
+  });
 }
 
 initEvents();
