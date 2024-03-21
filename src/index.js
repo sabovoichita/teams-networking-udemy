@@ -72,6 +72,7 @@ function loadTeams() {
     .then(teams => {
       allTeams = teams;
       renderTeams(teams);
+      console.timeEnd("app-ready");
     });
 }
 
@@ -91,9 +92,13 @@ function onSubmit(e) {
     });
   } else {
     createTeamRequest(team).then(status => {
-      // console.warn("status: ?", status);
+      console.warn("status: ?", status, team);
       if (status.success) {
-        window.location.reload();
+        // window.location.reload();
+        team.id = status.id;
+        allTeams.push(team);
+        renderTeams(allTeams);
+        $("#teamForm").reset();
       }
     });
   }
