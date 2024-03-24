@@ -50,15 +50,40 @@ function getTeamAsHTML(team) {
   <td>
   <button type = "button" data-id="${team.id}" class = "action-btn edit-btn">&#9998;</button>
   <button type = "button" data-id="${team.id}" class = "action-btn delete-btn">♻</button>
-
   </td>
 </tr>`;
 }
 
+function areTeamEquals(renderedTeams, teams) {
+  if (renderedTeams === teams) {
+    console.info("same array");
+    return true;
+  }
+  if (renderedTeams.length === teams.length) {
+    const eq = renderedTeams.every((team, i) => team === teams[i]);
+    if (eq) {
+      console.info("same content in arrays");
+      return true;
+    }
+  }
+  return false;
+}
+
+let renderedTeams = [];
 function renderTeams(teams) {
+  // console.time("eq-check");
+  if (areTeamEquals(renderedTeams, teams)) {
+    // console.timeEnd("eq-check");
+    return;
+  }
+  // console.timeEnd("eq-check");
+
+  renderedTeams === teams;
+  console.time("render");
   const teamsHTML = teams.map(getTeamAsHTML);
 
-  $("#teamsTable tBody").innerHTML = teamsHTML.join("");
+  $("#teamsTable tbody").innerHTML = teamsHTML.join("");
+  console.timeEnd("render");
 }
 
 function loadTeams() {
@@ -94,7 +119,6 @@ function onSubmit(e) {
     createTeamRequest(team).then(status => {
       console.warn("status: ?", status, team);
       if (status.success) {
-        // window.location.reload();
         team.id = status.id;
         allTeams.push(team);
         renderTeams(allTeams);
