@@ -6,7 +6,16 @@ let allTeams = [];
 function $(selector) {
   return document.querySelector(selector);
 }
-// POST teams-json/create
+
+function loadTeamsRequest() {
+  return fetch("http://localhost:3000/teams-json", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(r => r.json());
+}
+
 function createTeamRequest(team) {
   return fetch("http://localhost:3000/teams-json/create", {
     method: "POST",
@@ -37,7 +46,7 @@ function updateTeamRequest(team) {
   }).then(r => r.json());
 }
 
-function getTeamAsHTML({ promotion, members, name, url }) {
+function getTeamAsHTML({ promotion, members, name, id, url }) {
   const displayUrl = url.startsWith("https://github.com/") ? url.substring(19) : url;
   return `<tr>
   <td>${promotion}</td>
@@ -86,18 +95,11 @@ function renderTeams(teams) {
 }
 
 function loadTeams() {
-  fetch("http://localhost:3000/teams-json", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(r => r.json())
-    .then(teams => {
-      allTeams = teams;
-      renderTeams(teams);
-      console.timeEnd("app-ready");
-    });
+  loadTeamsRequest().then(teams => {
+    allTeams = teams;
+    renderTeams(teams);
+    console.timeEnd("app-ready");
+  });
 }
 
 function updateTeam(teams, team) {
