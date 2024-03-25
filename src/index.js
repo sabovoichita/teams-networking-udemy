@@ -1,3 +1,5 @@
+// import { debounce } from "lodash"; // imports too much code
+import debounce from "lodash/debounce"; // improved import
 import "./style.css";
 
 let editId;
@@ -126,7 +128,7 @@ async function onSubmit(e) {
     if (status.success) {
       allTeams = updateTeam(allTeams, team);
       renderTeams(allTeams);
-      $("#teamForm").reset();
+      $("#teamsForm").reset();
     }
   } else {
     createTeamRequest(team).then(status => {
@@ -136,9 +138,9 @@ async function onSubmit(e) {
         // allTeams = allTeams.map(team => team);
         // allTeams.push(team);
         // allTeams=[...allTeams.teams] // copy array and add elements at the beggining
-        allTeams = [...allTeams.teams]; // copy array & add elements at the end
+        allTeams = [...allTeams, teams]; // copy array & add elements at the end
         renderTeams(allTeams);
-        $("#teamForm").reset();
+        $("#teamsForm").reset();
       }
     });
   }
@@ -173,7 +175,7 @@ function getTeamValues() {
 
 function filterElements(teams, search) {
   search = search.toLowerCase();
-  //   console.warn("search %o", search);
+  // console.warn("search %o", search);
   return teams.filter(({ promotion, members, name, url }) => {
     return (
       promotion.toLowerCase().includes(search) ||
@@ -185,14 +187,19 @@ function filterElements(teams, search) {
 }
 
 function initEvents() {
-  $("#search").addEventListener("input", e => {
-    const search = e.target.value;
-    const teams = filterElements(allTeams, search);
-    renderTeams(teams);
-  });
+  $("#search").addEventListener(
+    "input",
+    debounce(e => {
+      const search = e.target.value;
+      console.info("search %o", search);
+      const teams = filterElements(allTeams, search);
+      renderTeams(teams);
+    }),
+    200
+  );
 
-  $("#teamForm").addEventListener("submit", onSubmit);
-  $("#teamForm").addEventListener("reset", () => {
+  $("#teamsForm").addEventListener("submit", onSubmit);
+  $("#teamsForm").addEventListener("reset", () => {
     console.warn("reset", editId);
     editId = undefined;
   });
