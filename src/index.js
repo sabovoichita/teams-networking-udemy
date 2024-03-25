@@ -3,6 +3,7 @@ import debounce from "lodash/debounce"; // improved import
 import "./style.css";
 import { $, mask, unmask } from "./utilities";
 import { loadTeamsRequest, createTeamRequest, deleteTeamRequest, updateTeamRequest } from "./middleware";
+import { forEach } from "lodash";
 
 let editId;
 let allTeams = [];
@@ -102,7 +103,7 @@ async function onSubmit(e) {
         team.id = status.id;
         // allTeams = allTeams.map(team => team);
         // allTeams.push(team);
-        // allTeams=[...allTeams.teams] // copy array and add elements at the beggining
+        // allTeams=[team,...allTeams] // copy array and add elements at the beggining
         allTeams = [...allTeams, team]; // copy array & add elements at the end
         renderTeams(allTeams);
         $("#teamsForm").reset();
@@ -163,6 +164,12 @@ function initEvents() {
     }),
     200
   );
+
+  $("#selectAll").addEventListener("input", e => {
+    document.querySelectorAll("input[name=selected]").forEach(check => {
+      check.checked = e.target.checked;
+    });
+  });
 
   $("#teamsForm").addEventListener("submit", onSubmit);
   $("#teamsForm").addEventListener("reset", () => {
