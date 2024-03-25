@@ -16,6 +16,7 @@ You can also find new project ideas.
   - [x] **D**elete
 - [x] Search
 - [x] Loading mask
+- [x] Multiple remove...
 
 ## Start (Daily Usage)
 
