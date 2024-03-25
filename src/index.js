@@ -180,8 +180,10 @@ function initEvents() {
 }
 
 initEvents();
+$("#teamsForm").classList.add("loading-mask");
 loadTeams().then(() => {
   console.timeEnd("app-ready");
+  $("#teamsForm").classList.remove("loading-mask");
 });
 // this code blocks the main threat
 // await loadTeams();
