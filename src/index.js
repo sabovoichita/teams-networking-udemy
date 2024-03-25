@@ -113,7 +113,7 @@ function updateTeam(teams, team) {
   });
 }
 
-function onSubmit(e) {
+async function onSubmit(e) {
   e.preventDefault();
 
   const team = getTeamValues();
@@ -121,14 +121,13 @@ function onSubmit(e) {
   if (editId) {
     team.id = editId;
     console.warn("should we edit?", editId, team);
-    updateTeamRequest(team).then(status => {
-      //   console.warn("status", status);
-      if (status.success) {
-        allTeams = updateTeam(allTeams, team);
-        renderTeams(allTeams);
-        $("#teamForm").reset();
-      }
-    });
+
+    const status = await updateTeamRequest(team);
+    if (status.success) {
+      allTeams = updateTeam(allTeams, team);
+      renderTeams(allTeams);
+      $("#teamForm").reset();
+    }
   } else {
     createTeamRequest(team).then(status => {
       console.warn("status: ?", status, team);
@@ -218,7 +217,6 @@ initEvents();
 loadTeams().then(() => {
   console.timeEnd("app-ready");
 });
-
 // this code blocks the main threat
 // await loadTeams();
 // console.timeEnd("app-ready");
