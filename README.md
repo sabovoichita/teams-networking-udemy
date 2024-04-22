@@ -36,7 +36,7 @@ npm start
 
 ## 🎞 Live Preview
 
-- ➡ [Projects & Ideas](https://github.com/sabovoichita/teams-networking-udemy.git/)
+- ➡ [Projects & Ideas](https://sabovoichita.github.io/teams-networking-udemy/)
 
 ![Preview](images/preview.jpg)
 
