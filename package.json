@@ -11,7 +11,7 @@
     "build": "webpack --mode production",
     "api": "cd ../node-api/ & npm start",
     "start": "webpack serve --open",
-    "demo": "set PORT=8080 && serve docs"
+    "demo": "set PORT=8081 && serve docs"
   },
   "keywords": [],
   "author": "Voichita Maria",
