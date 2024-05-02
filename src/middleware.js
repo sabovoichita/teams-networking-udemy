@@ -34,8 +34,8 @@ if (isDemo) {
 }
 
 export function loadTeamsRequest() {
-  return fetch(baseUrl, {
-    method: "GET",
+  return fetch(API.READ.URL, {
+    method: API.READ.METHOD,
     headers: {
       "Content-Type": "application/json"
     }
@@ -43,18 +43,18 @@ export function loadTeamsRequest() {
 }
 
 export function createTeamRequest(team) {
-  return fetch(`${baseUrl}/create`, {
-    method: "POST",
+  return fetch(API.CREATE.URL, {
+    method: API.CREATE.METHOD,
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(team)
   }).then(r => r.json());
 }
-// DELETE teams-json/delete
+
 export function deleteTeamRequest(id) {
-  return fetch(`${baseUrl}/delete`, {
-    method: "DELETE",
+  return fetch(API.DELETE.URL, {
+    method: API.DELETE.METHOD,
     headers: {
       "Content-Type": "application/json"
     },
@@ -63,8 +63,8 @@ export function deleteTeamRequest(id) {
 }
 
 export function updateTeamRequest(team) {
-  return fetch(`${baseUrl}/update`, {
-    method: "PUT",
+  return fetch(API.UPDATE.URL, {
+    method: API.UPDATE.METHOD,
     headers: {
       "Content-Type": "application/json"
     },
