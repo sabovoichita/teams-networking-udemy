@@ -1,5 +1,3 @@
-# teams-networking-udemy
-
 # Teams Networking
 
 Teams job related networking (members, project name, project url)
