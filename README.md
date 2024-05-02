@@ -38,7 +38,7 @@ npm start
 
 - ➡ [Projects & Ideas](https://sabovoichita.github.io/teams-networking-udemy/)
 
-![Preview](./images/preview.png)
+![Preview](src/images/project.png)
 
 ## 📋 Steps to create this project
 
